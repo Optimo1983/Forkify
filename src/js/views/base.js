@@ -1,3 +1,5 @@
+// Variables and functions used by multiple view modules
+
 export const elements = {
    searchForm: document.querySelector('.search'),
    searchInput: document.querySelector('.search__field'),
