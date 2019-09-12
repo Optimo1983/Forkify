@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { key, key2, proxy } from '../config';
+import { key1, key2, proxy } from '../config';
 
 export default class Recipe {
    constructor(id) {
@@ -8,7 +8,7 @@ export default class Recipe {
 
    async getRecipe() {
       try {
-         const res = await axios(`${proxy}http://www.food2fork.com/api/get?key=${key2}&rId=${this.id}`);
+         const res = await axios(`${proxy}http://www.food2fork.com/api/get?key=${key1}&rId=${this.id}`);
          this.title = res.data.recipe.title;
          this.author = res.data.recipe.publisher;
          this.img = res.data.recipe.image_url;
@@ -18,6 +18,7 @@ export default class Recipe {
          console.log(error)
          alert('Something went wrong :(')
       }
+      console.log(this.ingredients);
    }
 
    calcTime() {
@@ -37,24 +38,33 @@ export default class Recipe {
       const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
 
       const newIngredients = this.ingredients.map(el => {
-         // Uniform units
+         // ===== Make uniform units ======
+         // Make all lowercase
          let ingredient = el.toLowerCase();
+
+         // Replace 'long units' with 'short units'
          unitsLong.forEach((unit, i) => {
             ingredient = ingredient.replace(unit, unitsShort[i]);
          });
 
          // Remove parentheses
-         ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+         ingredient = ingredient.replace(/ *\([^)]*\) */g, ' '); // Regular expression found via google
 
-         // Parse ingredients into count, unit and ingredient
+         // Parse ingredients into count, unit and ingredient by
+         // first splitting ingredient string into array
          const arrIng = ingredient.split(' ');
+
+         // then find the index in the array which contains the (short) unit
          const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+
 
          let objIngredient;
          if (unitIndex > -1) {
-            // There is a unit
-            // Ex: 4 1/2 cups, arrCount is [4, 1/2] --> eval('4+1/2') --> 4.5 
-            // Ex: 4 cups, arrCount is [4]
+            // There IS a unit
+
+            // Ex: '4 1/2 cups', arrCount is [4, 1/2] --> eval('4+1/2') --> 4.5 
+            // Ex: '4 cups', arrCount is [4]
+            // Ex: ' teaspoon'
             const arrCount = arrIng.slice(0, unitIndex);
             
             let count;
@@ -92,4 +102,20 @@ export default class Recipe {
       
       this.ingredients = newIngredients;
    }
+
+   updateServings (type) {
+      // Servings
+
+      const newServings = type === 'dec' ? this.servings - 1 : this.servings + 1;
+
+      // Ingredients
+      this.ingredients.forEach(ing => {
+         ing.count = ing.count * (newServings / this.servings);
+      });
+
+      this.servings = newServings;
+   }
+
 };
+
+
