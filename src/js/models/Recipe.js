@@ -106,16 +106,20 @@ export default class Recipe {
    updateServings (type) {
       // Servings
 
-      const newServings = type === 'dec' ? this.servings - 1 : this.servings + 1;
+      let newServings;
+      if (type === 'dec') {
+         newServings = this.servings - 1;
+      } else {
+         newServings = this.servings + 1;
+      }
+      console.log(newServings);
 
       // Ingredients
       this.ingredients.forEach(ing => {
-         ing.count = ing.count * (newServings / this.servings);
+         ing.count *= (newServings / this.servings);
       });
 
       this.servings = newServings;
    }
 
-};
-
-
+}
