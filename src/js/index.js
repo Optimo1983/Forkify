@@ -81,7 +81,6 @@ const controlRecipe = async () => {
          // Get recipe data
          await state.recipe.getRecipe();
          state.recipe.parseIngredients();
-         console.log(state.recipe);
 
          // Calculate servings and time
          state.recipe.calcTime();
@@ -103,7 +102,7 @@ const controlRecipe = async () => {
 elements.recipe.addEventListener('click', e => {
    if (e.target.matches('.btn-decrease, .btn-decrease *')) {
       // Decrease button is clicked
-      if (state.servings > 1) {
+      if (state.recipe.servings > 1) {
          state.recipe.updateServings('dec');
          recipeView.updateServingsIngredients(state.recipe);
       }
@@ -113,7 +112,6 @@ elements.recipe.addEventListener('click', e => {
       state.recipe.updateServings('inc');
       recipeView.updateServingsIngredients(state.recipe);
    }
-   console.log(state.recipe);
 });
 
 
