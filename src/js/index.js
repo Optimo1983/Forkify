@@ -19,7 +19,6 @@ Global state of app
 - Linked recipes
 */
 const state = {};
-window.state = state;
 
 //================================================================================
 // SEARCH CONTROLLER
@@ -45,7 +44,9 @@ const controlSearch = async () => {
          searchView.renderResults(state.search.result);
       } catch (error) {
          alert('Something went wrong with the search')
+         console.log(error);
       }
+      console.log(state.search);
    }
 };
 
@@ -86,6 +87,7 @@ const controlRecipe = async () => {
       try {
          // Get recipe data
          await state.recipe.getRecipe();
+         console.log(state.recipe);
          state.recipe.parseIngredients();
 
          // Calculate servings and time
@@ -169,7 +171,6 @@ const controlLike = () => {
          likesView.toggleLikeBtn(true);
       // Add like to UI list
       likesView.renderLike(newLike);
-      console.log(state.likes);
 
    // User has liked current recipe
    } else {
@@ -179,14 +180,25 @@ const controlLike = () => {
       likesView.toggleLikeBtn(false);
       // Remove like from UI list
       likesView.deleteLike(currentID);
-      console.log(state.likes);
    }
 
    likesView.toggleLikeMenu(state.likes.getNumLikes());
 
 }
 
+// Restore liked recipes on page load
+window.addEventListener('load', () => {
+   state.likes = new Likes();
 
+   // Restore likes
+   state.likes.readStorage();
+
+   // Toggle like menu button
+   likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+   // Render existing likes
+   state.likes.likes.forEach(like => likesView.renderLike(like));
+})
 
 
 // Handling recipe section button events
