@@ -18,7 +18,6 @@ export default class Recipe {
          console.log(error)
          alert('Something went wrong :(')
       }
-      console.log(this.ingredients);
    }
 
    calcTime() {
@@ -112,7 +111,6 @@ export default class Recipe {
       } else {
          newServings = this.servings + 1;
       }
-      console.log(newServings);
 
       // Ingredients
       this.ingredients.forEach(ing => {

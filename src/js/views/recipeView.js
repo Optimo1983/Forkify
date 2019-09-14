@@ -8,7 +8,8 @@ export const clearRecipe = () => {
 const formatCount = count => {
    if (count) {
       // converts count from number to string then splits it creating an array which is then mapped to return an array
-      const newCount = Math.round(count * 10000) / 10000;
+      const newCount = Math.round(count * 10) / 10;
+      console.log(newCount);
       const [int, dec] = count.toString().split('.').map(el => parseInt(el, 10));
 
       if (!dec) return newCount;
