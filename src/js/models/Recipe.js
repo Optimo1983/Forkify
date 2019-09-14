@@ -49,8 +49,7 @@ export default class Recipe {
          // Remove parentheses
          ingredient = ingredient.replace(/ *\([^)]*\) */g, ' '); // Regular expression found via google
 
-         // Parse ingredients into count, unit and ingredient by
-         // first splitting ingredient string into array
+         // Parse ingredients into count, unit and ingredient by first splitting ingredient string into array
          const arrIng = ingredient.split(' ');
 
          // then find the index in the array which contains the (short) unit
