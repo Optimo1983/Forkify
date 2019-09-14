@@ -8,7 +8,7 @@ export default class Search {
 
    async getResults(query) {
       try {
-         const res = await axios(`${proxy}http://www.food2fork.com/api/search?key=${key1}&q=${this.query}`);
+         const res = await axios(`${proxy}http://www.food2fork.com/api/search?key=${key2}&q=${this.query}`);
          this.result = res.data.recipes;
          //console.log(this.result);
       } catch(error) {
