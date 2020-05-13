@@ -24,6 +24,49 @@ body {
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw); }
 
+
+
+
+.pop-up__box {
+   display: none;
+   border: 1px solid rgb(98, 98, 98);
+   z-index: 100;
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 85%;
+   max-width: 50rem;
+   padding: 2.5rem 4rem;
+   border-radius: .6rem;
+   font-style: inherit;
+   font-size: 2rem;
+   color: rgb(98, 98, 98);
+   text-align: center;
+   background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+   box-shadow: 0rem .6rem 1.4rem 0.3rem rgba(0, 0, 0, 0.2);
+
+}
+
+.pop-up__close-btn {
+   position: absolute;
+   top: .8rem;
+   right: .8rem;
+   width: 2.4rem !important;
+   height: 2.4rem !important;
+}
+
+.pop-up__close-btn svg {
+   width: 2.8rem !important;
+   height: 2.8rem !important;
+   fill: rgb(98, 98, 98) !important;
+}
+
+.pop-up__close-btn svg:hover {
+
+   fill: #FFF !important;
+}
+
 .container {
   max-width: 120rem;
   margin: 4vw auto;
@@ -175,7 +218,7 @@ body {
   transition: all .3s; }
   .search:focus-within {
     transform: translateY(-2px);
-    box-shadow: 0 0.7rem 3rem rgba(101, 90, 86, 0.08); }
+    box-shadow: 0 0.7rem 2rem rgba(101, 90, 86, 0.15); }
   .search__field {
     border: none;
     background: none;
@@ -317,7 +360,7 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+      background-image: linear-gradient(to right bottom, rgba(251, 219, 137, 0.75), rgba(244, 138, 130, 0.75));
       opacity: .6; }
   .recipe__img {
     width: 100%;

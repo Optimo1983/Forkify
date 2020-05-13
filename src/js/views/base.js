@@ -9,7 +9,10 @@ export const elements = {
    recipe: document.querySelector('.recipe'),
    shopping: document.querySelector('.shopping__list'),
    likesMenu: document.querySelector('.likes__field'),
-   likesList: document.querySelector('.likes__list')
+   likesList: document.querySelector('.likes__list'),
+   popUpBox: document.querySelector('.pop-up__box'),
+   popUpCloseBtn: document.querySelector('.pop-up__close-btn'),
+   popUpMsg: document.querySelector('.pop-up__msg')
 };
 
 export const elementStrings = {
@@ -36,3 +39,12 @@ export const clearLoader = () => {
       loader.parentElement.removeChild(loader);
    };
 };
+
+export const showPopUp = (errorMsg) => {
+   elements.popUpBox.style.display = 'block';
+}
+
+export const closePopUp = () => {
+   elements.popUpBox.style.display = 'none';
+
+}

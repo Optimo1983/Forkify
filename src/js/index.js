@@ -1,4 +1,3 @@
-// Recipe API: https://www.food2fork.com/api/get
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
@@ -7,9 +6,9 @@ import Likes from './models/likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
-import * as likesView from './views/likesview';
+import * as likesView from './views/likesView';
 
-import { elements, renderLoader, clearLoader } from './views/base';
+import { elements, renderLoader, clearLoader, showPopUp, closePopUp } from './views/base';
 
 /*
 Global state of app
@@ -39,22 +38,29 @@ const controlSearch = async () => {
       try {
          // Search for recipes
          await state.search.getResults();
+
          // Render results on UI
          clearLoader();
          searchView.renderResults(state.search.result);
+         
       } catch (error) {
-         alert('Something went wrong with the search')
-         console.log(error);
+         showPopUp(state.search.error);
       }
-      console.log(state.search);
    }
 };
 
 // When search form is submitted
-elements.searchForm.addEventListener('submit', e =>{
+elements.searchForm.addEventListener('submit', e => {
    e.preventDefault();
    controlSearch();
 });
+
+// Close the error pop up window
+elements.popUpCloseBtn.addEventListener('click', e => {
+   closePopUp();
+})
+
+
 
 // When page buttons on search list are clicked
 elements.searchResPages.addEventListener('click', e => {
@@ -65,7 +71,6 @@ elements.searchResPages.addEventListener('click', e => {
       searchView.clearResults();
       searchView.renderResults(state.search.result, goToPage);
    };
-
 });
 
 //================================================================================
@@ -73,6 +78,7 @@ elements.searchResPages.addEventListener('click', e => {
 //================================================================================
 const controlRecipe = async () => {
    const id = window.location.hash.replace('#', '');
+   console.log('id', id);
 
    if (id) {
       // Prepare UI for changes
@@ -87,7 +93,7 @@ const controlRecipe = async () => {
       try {
          // Get recipe data
          await state.recipe.getRecipe();
-         console.log(state.recipe);
+
          state.recipe.parseIngredients();
 
          // Calculate servings and time
@@ -154,7 +160,6 @@ likesView.toggleLikeMenu(state.likes.getNumLikes());
 // LIKES CONTROLLER
 //================================================================================
 const controlLike = () => {
-   
    if (!state.likes) state.likes = new Likes();
    const currentID = state.recipe.id;
       
@@ -183,7 +188,6 @@ const controlLike = () => {
    }
 
    likesView.toggleLikeMenu(state.likes.getNumLikes());
-
 }
 
 // Restore liked recipes on page load
@@ -192,6 +196,8 @@ window.addEventListener('load', () => {
 
    // Restore likes
    state.likes.readStorage();
+   console.log('Storage', localStorage);
+   console.log('State', state);
 
    // Toggle like menu button
    likesView.toggleLikeMenu(state.likes.getNumLikes());

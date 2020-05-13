@@ -9,7 +9,6 @@ const formatCount = count => {
    if (count) {
       // converts count from number to string then splits it creating an array which is then mapped to return an array
       const newCount = Math.round(count * 10) / 10;
-      console.log(newCount);
       const [int, dec] = count.toString().split('.').map(el => parseInt(el, 10));
 
       if (!dec) return newCount;
@@ -125,7 +124,6 @@ export const updateServingsIngredients = recipe => {
 
    // Update ingredients
    const countElements = Array.from(document.querySelectorAll('.recipe__count'));
-   console.log(countElements);
 
    countElements.forEach((el, i) => {
       el.textContent = formatCount(recipe.ingredients[i].count);

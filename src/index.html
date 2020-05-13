@@ -12,11 +12,25 @@
 </head>
 
 <body>
-    <div class="container">
+
+   <div class="pop-up__box">
+      <div class="pop-up__container">
+         <button id="pop-up__close-btn" class="pop-up__close-btn btn-tiny">
+            <svg>
+                <use href="img/icons.svg#icon-circle-with-cross"></use>
+            </svg>
+        </button>
+         <p class="pop-up__msg">
+            We couldn't find any recipes based on your search. Please try again.
+         </p>
+      </div>
+   </div>
+
+   <div class="container">
         <header class="header">
             <img src="img/logo.png" alt="Logo" class="header__logo">
             <form class="search">
-                <input type="text" class="search__field" placeholder="Search over 1,000,000 recipes...">
+                <input type="text" class="search__field" placeholder="Search for recipes...">
                 <button class="btn search__btn">
                     <svg class="search__icon">
                         <use href="img/icons.svg#icon-magnifying-glass"></use>
@@ -49,7 +63,6 @@
                 </div>
             </div>
         </header>
-
 
         <div class="results">
             <ul class="results__list">
@@ -427,11 +440,6 @@
                 </li>
                 -->
             </ul>
-
-            <div class="copyright">
-                Powered by
-                <a href="http://food2fork.com" target="_blank" class="link">Food2Fork.com</a>.
-            </div>
 
         </div>
     </div>
