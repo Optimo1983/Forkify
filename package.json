@@ -2,7 +2,7 @@
   "name": "forkify",
   "version": "1.0.0",
   "description": "Recipe search app",
-  "main": "index.js",
+  "main": "home.html",
   "scripts": {
     "dev": "webpack --mode development",
     "build-predeploy": "webpack --mode production",
