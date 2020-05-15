@@ -44,7 +44,7 @@ const controlSearch = async () => {
          searchView.renderResults(state.search.result);
          
       } catch (error) {
-         showPopUp(state.search.error);
+         searchView.showPopUp(state.search.error);
       }
    }
 };
@@ -57,9 +57,8 @@ elements.searchForm.addEventListener('submit', e => {
 
 // Close the error pop up window
 elements.popUpCloseBtn.addEventListener('click', e => {
-   closePopUp();
+   searchView.closePopUp();
 })
-
 
 
 // When page buttons on search list are clicked
@@ -78,7 +77,6 @@ elements.searchResPages.addEventListener('click', e => {
 //================================================================================
 const controlRecipe = async () => {
    const id = window.location.hash.replace('#', '');
-   console.log('id', id);
 
    if (id) {
       // Prepare UI for changes
@@ -114,9 +112,9 @@ const controlRecipe = async () => {
    }
 };
 
+
 // Load recipe when url hash changes or page is loaded (with hash)
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
-
 
 //================================================================================
 // LIST CONTROLLER
@@ -152,9 +150,10 @@ elements.shopping.addEventListener('click', e => {
    }
 });
 
+
+
 state.likes = new Likes();
 likesView.toggleLikeMenu(state.likes.getNumLikes());
-
 
 //================================================================================
 // LIKES CONTROLLER
@@ -206,6 +205,20 @@ window.addEventListener('load', () => {
    state.likes.likes.forEach(like => likesView.renderLike(like));
 })
 
+// Toggle likesMenu 
+elements.likesMenu.addEventListener('click', likesView.toggleLikesMenu);
+
+
+// Ensure sections are not visible if no content
+console.log(document.querySelectorAll('.recipe__fig'), document.querySelectorAll('.shopping__item'), document.querySelectorAll('.results__link'));
+
+// document.querySelector('.recipe__fig') == !undefined ? console.log('Figure') : console.log('no figure');
+
+// document.querySelector('.shopping__item') == !undefined ? console.log('Shopping item') : console.log('No shopping item');
+
+// document.querySelector('.results__link') == !undefined ? console.log('Results link') : console.log('No results link');
+
+
 
 // Handling recipe section button events
 elements.recipe.addEventListener('click', e => {
@@ -228,6 +241,8 @@ elements.recipe.addEventListener('click', e => {
       controlLike();
    }
 });
+
+
 
 
 

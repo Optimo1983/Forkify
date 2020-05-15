@@ -33,3 +33,20 @@ export const deleteLike = id => {
 
    if (el) el.parentElement.removeChild(el);
 }
+
+export const toggleLikesMenu = e => {
+   if (elements.likesPanel.classList.contains('open')) {
+      console.log('Closing the likes');
+      elements.likesPanel.classList.remove('open');
+
+      elements.likesPanel.style.opacity = "0";
+      elements.likesPanel.style.visibility = "hidden";
+   } else {
+      console.log('Opening the likes');
+      elements.likesPanel.classList.add('open');
+
+      elements.likesPanel.style.visibility = "visible";
+      elements.likesPanel.style.opacity = "1";
+
+   }
+}

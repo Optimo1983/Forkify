@@ -9,6 +9,7 @@ export const elements = {
    recipe: document.querySelector('.recipe'),
    shopping: document.querySelector('.shopping__list'),
    likesMenu: document.querySelector('.likes__field'),
+   likesPanel: document.querySelector('.likes__panel'),
    likesList: document.querySelector('.likes__list'),
    popUpBox: document.querySelector('.pop-up__box'),
    popUpCloseBtn: document.querySelector('.pop-up__close-btn'),
@@ -24,7 +25,7 @@ export const renderLoader = parent => {
    const loader = `
       <div class="${elementStrings.loader}">
          <svg>
-            <use href="dist/img/icons.svg#icon-cw"></use>
+            <use href="img/icons.svg#icon-cw"></use>
          </svg>
       </div>
    `;

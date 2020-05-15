@@ -51,7 +51,7 @@ const createButton = (page, type) =>  `
    <button class="btn-inline results__btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
          <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
          <svg class="search__icon">
-            <use href="dist/img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
          </svg>
    </button>
 `;
@@ -93,3 +93,11 @@ export const renderResults = (recipes, page = 1, resPerPage = 10) => {
    renderButtons(page, recipes.length, resPerPage);
 };
 
+export const showPopUp = (errorMsg) => {
+   elements.popUpBox.style.display = 'block';
+}
+
+export const closePopUp = () => {
+   elements.popUpBox.style.display = 'none';
+
+}
