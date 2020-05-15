@@ -41,11 +41,8 @@ export const clearLoader = () => {
    };
 };
 
-export const showPopUp = (errorMsg) => {
-   elements.popUpBox.style.display = 'block';
-}
+export const showPageSection = (node) => {
+   node.classList.remove('remove');
+};
 
-export const closePopUp = () => {
-   elements.popUpBox.style.display = 'none';
 
-}

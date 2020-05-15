@@ -8,7 +8,7 @@ import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 
-import { elements, renderLoader, clearLoader, showPopUp, closePopUp } from './views/base';
+import { elements, renderLoader, clearLoader, showPageSection } from './views/base';
 
 /*
 Global state of app
@@ -52,6 +52,7 @@ const controlSearch = async () => {
 // When search form is submitted
 elements.searchForm.addEventListener('submit', e => {
    e.preventDefault();
+   showPageSection(document.querySelector('.results'));
    controlSearch();
 });
 
@@ -79,6 +80,9 @@ const controlRecipe = async () => {
    const id = window.location.hash.replace('#', '');
 
    if (id) {
+      // Display recipe section
+      showPageSection(document.querySelector('.recipe'));
+
       // Prepare UI for changes
       recipeView.clearRecipe();
       renderLoader(elements.recipe);
@@ -122,6 +126,9 @@ const controlRecipe = async () => {
 const controlList = () => {
    // Create new list IF there is none yet
    if (!state.list) state.list = new List();
+
+   // Display shopping list section
+   showPageSection(document.querySelector('.shopping'));
 
    // Add each ingredient to the list
    state.recipe.ingredients.forEach(el => {
@@ -195,31 +202,40 @@ window.addEventListener('load', () => {
 
    // Restore likes
    state.likes.readStorage();
-   console.log('Storage', localStorage);
-   console.log('State', state);
 
    // Toggle like menu button
    likesView.toggleLikeMenu(state.likes.getNumLikes());
 
    // Render existing likes
    state.likes.likes.forEach(like => likesView.renderLike(like));
+
+   for (let element of document.querySelectorAll('.likes__link')) {
+      element.addEventListener('click', likesView.toggleLikesPanel);
+   }
 })
 
 // Toggle likesMenu 
-elements.likesMenu.addEventListener('click', likesView.toggleLikesMenu);
+elements.likesMenu.addEventListener('click', likesView.toggleLikesPanel);
+
+
 
 
 // Ensure sections are not visible if no content
-console.log(document.querySelectorAll('.recipe__fig'), document.querySelectorAll('.shopping__item'), document.querySelectorAll('.results__link'));
-
-// document.querySelector('.recipe__fig') == !undefined ? console.log('Figure') : console.log('no figure');
-
-// document.querySelector('.shopping__item') == !undefined ? console.log('Shopping item') : console.log('No shopping item');
-
-// document.querySelector('.results__link') == !undefined ? console.log('Results link') : console.log('No results link');
-
-
-
+window.addEventListener('load', () => {
+   if (window.innerWidth < 481)
+   setTimeout(() => {
+      if (!state.list) {
+         document.querySelector('.shopping').classList.add('remove');
+      } 
+      if (!state.recipe) {
+         document.querySelector('.recipe').classList.add('remove');
+      } 
+      if (!state.search) {
+         document.querySelector('.results').classList.add('remove');
+      } 
+  }, 250);
+});
+  
 // Handling recipe section button events
 elements.recipe.addEventListener('click', e => {
    if (e.target.matches('.btn-decrease, .btn-decrease *')) {

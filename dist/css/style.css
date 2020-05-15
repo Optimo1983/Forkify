@@ -29,7 +29,9 @@ body {
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw); }
 
-
+.remove {
+   display: none !important;
+}
 
 
 .pop-up__box {
@@ -349,15 +351,12 @@ body {
          }
       }
 
-    .likes__field:hover {
-      background-color: #F2EFEE; }
 
-  /* .likes__panel:hover,
-  .likes__field:hover + .likes__panel {
-    visibility: visible;
-    opacity: 1; } */
-
-
+   @media only screen and (min-width: 68.75em) {
+      .likes__field:hover {
+         background-color: #F2EFEE; }
+   }
+    
   .likes__icon {
     fill: #F59A83;
     height: 3.75rem;
@@ -366,7 +365,7 @@ body {
     position: absolute;
     right: 0;
     top: 10rem;
-    z-index: 10;
+    z-index: 100;
     padding: 2rem 0;
     width: 34rem;
     background-color: #fff;
@@ -552,7 +551,7 @@ body {
     width: 70%;
     line-height: 2.2;
     text-align: center; }
-    .recipe__title span {
+   .recipe__title span {
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
       padding: 1rem 2rem;
@@ -560,20 +559,18 @@ body {
   .recipe__details {
     display: flex;
     align-items: center;
-    padding: 8rem 3rem 3rem 3rem; }
-    @media only screen and (max-width: 56.25em) {
-      .recipe__details {
-         padding: 8rem 1.5rem 1.5rem 1.5rem;
+    padding: 7rem 3rem 3rem 3rem; }
+      @media only screen and (max-width: 56.25em) {
+         .recipe__details {
+            padding: 7rem 1.5rem 3rem 1.5rem;
+         }
       }
-    }
-    @media only screen and (max-width: 34.375em) {
-      .recipe__details {
-         flex-direction: column;
+      @media only screen and (max-width: 34.375em) {
+         .recipe__details {
+            flex-direction: column;
+         }
       }
-    }
 
-    
-    
   .recipe__info {
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -585,14 +582,12 @@ body {
       @media only screen and (max-width: 56.25em) {
          .recipe__info:not(:last-child) {
             margin-right: 2rem;
-            
          }
       }
       @media only screen and (max-width: 34.375em) {
          .recipe__info:not(:last-child) {
             margin-right: 0;
             margin-bottom: .8rem;
-            
          }
       }
   .recipe__info-icon {
@@ -773,7 +768,9 @@ body {
     padding: 1.4rem 0;
     padding-right: 1.8rem;
     border-bottom: 1px solid #F2EFEE;
-    position: relative; }
+    position: relative;
+    transition: transform .5s ease;
+   }
 
       @media only screen and (max-width: 53.13em) {
          .shopping__item {
