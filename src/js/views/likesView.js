@@ -7,7 +7,13 @@ export const toggleLikeBtn = isLiked => {
 };
 
 export const toggleLikeMenu = numLikes => {
-   elements.likesMenu.style.visibility = numLikes > 0 ? 'visible' : 'hidden';
+   if (window.innerWidth > 600){
+      elements.likesMenu.style.visibility = numLikes > 0 ? 'visible' : 'hidden';
+
+   } else {
+      elements.likesMenu.style.display = numLikes > 0 ? 'flex' : 'none';
+
+   }
 }
 
 export const renderLike = like => {
@@ -35,10 +41,13 @@ export const deleteLike = id => {
 }
 
 export const toggleLikesPanel = e => {
-   if (elements.likesPanel.classList.contains('open')) {
-      closeLikesPanel();
-   } else {
-      openLikesPanel();
+   console.log(e.target)
+   if (e.target.matches('.likes__link, .likes__link *') || e.target.matches('.likes__field, .likes__field *')) {
+      if (elements.likesPanel.classList.contains('open')) {
+         closeLikesPanel();
+      } else {
+         openLikesPanel();
+      }
    }
 }
 

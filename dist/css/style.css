@@ -27,7 +27,13 @@ body {
   background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 2 * 4vw); }
+  min-height: calc(100vh - 2 * 4vw); 
+}
+   @media only screen and (max-width: 68.75em) {
+      body {
+         height: 100vh;
+      }
+   }
 
 .remove {
    display: none !important;
@@ -79,7 +85,7 @@ body {
   margin: 4vw auto;
   background-color: #fff;
   border-radius: 6px;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
   display: grid;
   grid-template-rows: 10rem minmax(100rem, auto);
@@ -302,6 +308,7 @@ body {
          width: 70%;
          padding-left: 2rem;
          margin-left: 2rem;
+         margin-right: 2rem;
       }
    }
 
@@ -392,6 +399,13 @@ body {
          grid-area: list;
       }
    }
+
+   @media only screen and (max-width: 30em) {
+      .results {
+         min-height: 49.375rem;
+      }
+   }
+
 
    /* @media only screen and (max-width: 30em) {
       .results {

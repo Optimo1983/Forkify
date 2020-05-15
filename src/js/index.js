@@ -78,6 +78,7 @@ elements.searchResPages.addEventListener('click', e => {
 //================================================================================
 const controlRecipe = async () => {
    const id = window.location.hash.replace('#', '');
+   console.log('id', id)
 
    if (id) {
       // Display recipe section
@@ -223,7 +224,7 @@ elements.likesMenu.addEventListener('click', likesView.toggleLikesPanel);
 // Ensure sections are not visible if no content
 window.addEventListener('load', () => {
    if (window.innerWidth < 481)
-   setTimeout(() => {
+   // setTimeout(() => {
       if (!state.list) {
          document.querySelector('.shopping').classList.add('remove');
       } 
@@ -233,7 +234,7 @@ window.addEventListener('load', () => {
       if (!state.search) {
          document.querySelector('.results').classList.add('remove');
       } 
-  }, 250);
+//   }, 250);
 });
   
 // Handling recipe section button events
