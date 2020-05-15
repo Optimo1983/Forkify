@@ -223,8 +223,7 @@ elements.likesMenu.addEventListener('click', likesView.toggleLikesPanel);
 
 // Ensure sections are not visible if no content
 window.addEventListener('load', () => {
-   if (window.innerWidth < 481)
-   // setTimeout(() => {
+   if (window.innerWidth < 481) {
       if (!state.list) {
          document.querySelector('.shopping').classList.add('remove');
       } 
@@ -233,8 +232,8 @@ window.addEventListener('load', () => {
       } 
       if (!state.search) {
          document.querySelector('.results').classList.add('remove');
-      } 
-//   }, 250);
+      }
+   }
 });
   
 // Handling recipe section button events
