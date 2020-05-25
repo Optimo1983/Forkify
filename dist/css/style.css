@@ -56,7 +56,8 @@ body {
    font-size: 2rem;
    color: rgb(98, 98, 98);
    text-align: center;
-   background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+   /* background-image: linear-gradient(to right bottom, #FBDB89, #F48982); */
+   background-color: #FFF;
    box-shadow: 0rem .6rem 1.4rem 0.3rem rgba(0, 0, 0, 0.2);
 
 }
@@ -75,10 +76,10 @@ body {
    fill: rgb(98, 98, 98) !important;
 }
 
-.pop-up__close-btn svg:hover {
+/* .pop-up__close-btn svg:hover {
 
    fill: #FFF !important;
-}
+} */
 
 .container {
   max-width: 120rem;
