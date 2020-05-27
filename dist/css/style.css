@@ -337,11 +337,15 @@ body {
 .likes {
   position: relative;
   align-self: stretch;
-  padding: 0 !important; }
+  padding: 0 !important; 
+  transition: background-color .25s ease-in-out;
+}
+
+.likes:hover {
+   background-color: darken(#F0F0F0, 10%);
+}
   
-  .likes:hover {
-     background-color: darken(#F0F0F0, 10%);
-  }
+  
 
   .likes__field {
     cursor: pointer;
@@ -351,11 +355,11 @@ body {
     height: 100%;
     transition: all .3s; }
 
-    @media only screen and (max-width: 46.875em) {
-         .likes__field {
-            padding: 0 2rem;
-         }
+   @media only screen and (max-width: 46.875em) {
+      .likes__field {
+         padding: 0 2rem;
       }
+   }
 
 
    @media only screen and (min-width: 68.75em) {
