@@ -248,7 +248,7 @@ body {
 
 .header {
   grid-area: head;
-  background-color: #F9F5F3;
+  background-color: #F0F0F0;
   display: flex;
   align-items: center;
   justify-content: space-between; }
@@ -502,7 +502,7 @@ body {
     float: right; }
 
 .recipe {
-  background-color: #F9F5F3;
+  background-color: #F0F0F0;
   border-top: 1px solid #fff; }
 
   @media only screen and (max-width: 53.13em) {
@@ -646,7 +646,7 @@ body {
     padding: 4rem 5rem;
     font-size: 1.5rem;
     line-height: 1.4;
-    background-color: #F2EFEE;
+    background-color: #E8E8E8;
     display: flex;
     flex-direction: column;
     align-items: center; }
