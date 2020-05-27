@@ -342,7 +342,7 @@ body {
 }
 
 .likes:hover {
-   background-color: darken(#F0F0F0, 10%);
+   background-color: rgb(216, 215, 215);
 }
   
   
