@@ -338,11 +338,10 @@ body {
   position: relative;
   align-self: stretch;
   padding: 0 !important; }
-  /* @media only screen and (max-width: 37.5em) {
-      .likes {
-         align-self: center;
-      }
-   } */
+  
+  .likes:hover {
+     background-color: darken(#F0F0F0, 10%);
+  }
 
   .likes__field {
     cursor: pointer;
