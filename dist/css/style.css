@@ -341,12 +341,6 @@ body {
   transition: background-color .25s ease-in-out;
 }
 
-.likes:hover {
-   background-color: rgb(216, 215, 215);
-}
-  
-  
-
   .likes__field {
     cursor: pointer;
     padding: 0 4rem;
@@ -364,7 +358,7 @@ body {
 
    @media only screen and (min-width: 68.75em) {
       .likes__field:hover {
-         background-color: #F2EFEE; }
+         background-color: #EDEDED; }
    }
     
   .likes__icon {
